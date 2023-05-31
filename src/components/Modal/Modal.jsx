@@ -1,6 +1,9 @@
 import { Component } from 'react';
+import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 import PropTypes from 'prop-types';
+
+const modalRoot = document.getElementById('modal-root');
 
 class Modal extends Component {
   handalKeyDown = e => {
@@ -18,7 +21,7 @@ class Modal extends Component {
   }
 
   render() {
-    return (
+    return createPortal(
       <div className={css.Overlay} onClick={this.props.switchModal}>
         <div className={css.Modal}>
           <img
@@ -27,7 +30,8 @@ class Modal extends Component {
             className={css.Modal}
           />
         </div>
-      </div>
+      </div>,
+      modalRoot
     );
   }
 }

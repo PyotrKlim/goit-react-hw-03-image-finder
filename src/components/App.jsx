@@ -59,10 +59,10 @@ export class App extends Component {
     return (
       <div className={css.App}>
         <Searchbar onSubmit={this.getQuery} />
-        {isLoading && <Loader />}
         {images.length > 0 && <GalleryList images={images} />}
-        {error && <p>{error}</p>}
+        {isLoading && <Loader />}
         {showButton && <Button onClick={this.pagePlus} />}
+        {error && <p>{error}</p>}
       </div>
     );
   }
